@@ -2,4 +2,4 @@
 #include <concepts>
 
 template<typename T>
-concept Action = requires{std::invocable<T>; };
+concept Action = std::invocable<T>;
