@@ -26,5 +26,8 @@
     <ClInclude Include="IfElse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CustomConcepts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

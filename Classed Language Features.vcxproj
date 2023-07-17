@@ -105,6 +105,8 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,6 +133,7 @@
     <ClCompile Include="Classed Language Features.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CustomConcepts.h" />
     <ClInclude Include="IfElse.h" />
     <ClInclude Include="SwitchCase.h" />
   </ItemGroup>
