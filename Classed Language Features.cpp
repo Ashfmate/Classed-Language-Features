@@ -1,45 +1,47 @@
 #include <iostream>
+#include <conio.h>
 #include "SwitchCase.h"
+#include "IfElse.h"
 
-void calcVertical(int top, int bottom, int height, double& res)
+bool isAhmed()
 {
-	res = ((double)top + (double)bottom) / (double)height;
+	std::cout << "Is your name Ahmed? (y/n): ";
+	char ans = _getch();
+	return ans == 'y' || ans == 'Y';
 }
 
-void calcHorizontal(int left, int right, int width, double& res)
+bool isMohammed()
 {
-	res = ((double)left + (double)right) / (double)width;
+	std::cout << "Is your name Mohammed? (y/n): ";
+	char ans = _getch();
+	return ans == 'y' || ans == 'Y';
 }
 
-void notFound()
+bool isAyham()
 {
-	std::cout << "There is no calculation for that\n";
+	std::cout << "Is your name Ayham? (y/n): ";
+	char ans = _getch();
+	return ans == 'y' || ans == 'Y';
 }
 
-void Visited(double h_res, double v_res)
+bool isIbrahim()
 {
-	std::cout
-		<< "Thank you for using our calculation\n"
-		<< "Your horizontal result is : " << h_res
-		<< "\nYour vertical result is : " << v_res;
+	std::cout << "Is your name Ibrahim? (y/n): ";
+	char ans = _getch();
+	return ans == 'y' || ans == 'Y';
 }
 
 int main()
 {
-	SwitchCase<std::string> sc{};
-	int width = 1000;
-	int height = 600;
-	int left = 60;
-	int right = 100;
-	int top = 100;
-	int bottom = 300;
-	double v_res = 0.0;
-	double h_res = 0.0;
-	sc
-	.addCase("Vertical", std::bind(calcVertical,top,bottom,height,v_res))
-	.addCase("Horizontal", std::bind(calcHorizontal,left,right,width,h_res))
-	.switchOn("Horizontal").switchOn("Vertical").switchOn("None", notFound)
-	.ifVisited(std::bind(Visited,h_res,v_res))
+	IfElse ifelse{};
+
+	ifelse
+	.add(isAhmed,		[](){std::cout << "Welcome here brother Ahmed\n";		})
+	.add(isMohammed,	[](){std::cout << "Welcome here brother Mohammed\n";	})
+	.add(isAyham,		[](){std::cout << "Welcome here brother Ayham\n";		})
+	.add(isIbrahim,		[](){std::cout << "Welcome here brother Ibrahim\n";		})
+	([](){ std::cout << "You are not one of the brothers, please leave\n";		})
+	.ifVisited([](){ std::cout << "We welcome you brothers and we want you to come back, for the motherland\n"; })
 	;
 	std::cin.get();
 }

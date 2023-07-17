@@ -131,6 +131,7 @@
     <ClCompile Include="Classed Language Features.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="IfElse.h" />
     <ClInclude Include="SwitchCase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
