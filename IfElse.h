@@ -2,6 +2,7 @@
 #include <vector>
 #include <functional>
 #include <utility>
+#include "CustomConcepts.h"
 
 class IfElse
 {
@@ -20,7 +21,7 @@ public:
 		if (!visited && def) def();
 		return *this;
 	}
-	IfElse& add(std::function<bool()> pred, std::function<void()> fn)
+	IfElse& add(Action auto pred, Action auto fn)
 	{
 		m_if_array.emplace_back(std::pair{ pred,fn });
 		return *this;
@@ -29,7 +30,7 @@ public:
 	{
 		return m_if_array.size();
 	}
-	IfElse& ifVisited(std::function<void()> fn)
+	IfElse& ifVisited(Action auto fn)
 	{
 		if (visited)
 		{

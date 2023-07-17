@@ -39,8 +39,7 @@ int main()
 	.add(isAhmed,		[](){std::cout << "Welcome here brother Ahmed\n";		})
 	.add(isMohammed,	[](){std::cout << "Welcome here brother Mohammed\n";	})
 	.add(isAyham,		[](){std::cout << "Welcome here brother Ayham\n";		})
-	.add(isIbrahim,		[](){std::cout << "Welcome here brother Ibrahim\n";		})
-	([](){ std::cout << "You are not one of the brothers, please leave\n";		})
+	.add(isIbrahim,		[](){std::cout << "Welcome here brother Ibrahim\n";		})()
 	.ifVisited([](){ std::cout << "We welcome you brothers and we want you to come back, for the motherland\n"; })
 	;
 	std::cin.get();

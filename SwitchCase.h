@@ -1,12 +1,13 @@
 #pragma once
 #include <unordered_map>
 #include <functional>
+#include "CustomConcepts.h"
 
 template<typename Ty>
 class SwitchCase
 {
 public:
-	SwitchCase& operator()(const Ty& val, std::function<void()> fn = {})
+	SwitchCase& operator()(const Ty& val, Action auto fn = {})
 	{
 		if (auto it = m_switch_map.find(val); it != m_switch_map.end())
 		{
@@ -17,7 +18,7 @@ public:
 			fn();
 		return *this;
 	}
-	SwitchCase& add(const Ty& val, std::function<void()> fn)
+	SwitchCase& add(const Ty& val, Action auto fn)
 	{
 		m_switch_map[val] = fn;
 		return *this;
@@ -26,7 +27,7 @@ public:
 	{
 		return m_switch_map.size();
 	}
-	SwitchCase& ifVisited(std::function<void()> fn)
+	SwitchCase& ifVisited(Action auto fn)
 	{
 		if (visited)
 		{
