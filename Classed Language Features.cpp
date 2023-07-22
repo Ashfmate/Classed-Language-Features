@@ -1,46 +1,23 @@
 #include <iostream>
-#include <conio.h>
 #include "SwitchCase.h"
 #include "IfElse.h"
 
-bool isAhmed()
-{
-	std::cout << "Is your name Ahmed? (y/n): ";
-	char ans = _getch();
-	return ans == 'y' || ans == 'Y';
-}
-
-bool isMohammed()
-{
-	std::cout << "Is your name Mohammed? (y/n): ";
-	char ans = _getch();
-	return ans == 'y' || ans == 'Y';
-}
-
-bool isAyham()
-{
-	std::cout << "Is your name Ayham? (y/n): ";
-	char ans = _getch();
-	return ans == 'y' || ans == 'Y';
-}
-
-bool isIbrahim()
-{
-	std::cout << "Is your name Ibrahim? (y/n): ";
-	char ans = _getch();
-	return ans == 'y' || ans == 'Y';
-}
-
 int main()
 {
-	IfElse ifelse{};
-
-	ifelse
-	.add(isAhmed,		[](){std::cout << "Welcome here brother Ahmed\n";		})
-	.add(isMohammed,	[](){std::cout << "Welcome here brother Mohammed\n";	})
-	.add(isAyham,		[](){std::cout << "Welcome here brother Ayham\n";		})
-	.add(isIbrahim,		[](){std::cout << "Welcome here brother Ibrahim\n";		})()
-	.ifVisited([](){ std::cout << "We welcome you brothers and we want you to come back, for the motherland\n"; })
-	;
+	SwitchCase<std::string> cs{};
+	IfElse ie{};
+	std::string res;
+	cs
+		.add("A", [&res]() { std::cout << "Case A has been hit\n"; res = "A"; })
+		.add("B", [&res]() { std::cout << "Case B has been hit\n"; res = "B"; })
+		.add("C", [&res]() { std::cout << "Case C has been hit\n"; res = "C"; })
+		("B")
+		;
+	ie
+		.add([&res]() { return res == "A"; }, [&res]() { std::cout << "Result is " << res << "\n"; })
+		.add([&res]() { return res == "B"; }, [&res]() { std::cout << "Result is " << res << "\n"; })
+		.add([&res]() { return res == "C"; }, [&res]() { std::cout << "Result is " << res << "\n"; })
+		([]() { std::cout << "result is not A or B or C\n"; });
+		;
 	std::cin.get();
 }

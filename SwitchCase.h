@@ -7,15 +7,15 @@ template<typename Ty>
 class SwitchCase
 {
 public:
-	SwitchCase& operator()(const Ty& val, Action auto fn = {})
+	SwitchCase& operator()(const Ty& val, std::function<void()> def = {})
 	{
 		if (auto it = m_switch_map.find(val); it != m_switch_map.end())
 		{
 			visited = true;
 			it->second();
 		}
-		else
-			fn();
+		else if (def)
+			def();
 		return *this;
 	}
 	SwitchCase& add(const Ty& val, Action auto fn)

@@ -18,7 +18,8 @@ public:
 				break;
 			}
 		}
-		if (!visited && def) def();
+		if (!visited && def) 
+			def();
 		return *this;
 	}
 	IfElse& add(Action auto pred, Action auto fn)
